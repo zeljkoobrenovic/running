@@ -1,0 +1,24 @@
+<div style="margin: 20px">
+  <div>
+    <p>Optimise your <b>running economy (aka efficiency)</b> to preserve energy
+      especially for the back end of the race. Consider the following:</p>
+    <ul>
+      <li *ngFor="let tech of service.technique" [innerHTML]="tech"></li>
+    </ul>
+    <p>Incorporating drills into your <b>warm up</b> is an effective way to develop <b>muscle
+      memory</b> for good running technique.</p>
+  </div>
+  <div>
+    <p>During trainings you can also choose to practice one area, and focus on:</p>
+    <ul>
+      <li *ngFor="let focus of service.focus" [innerHTML]="focus"></li>
+    </ul>
+  </div>
+  <h3>Tips</h3>
+  <div *ngFor="let advice of service.advice">
+    <p>{{ advice.group }}</p>
+    <ul>
+      <li *ngFor="let tip of advice.tips">{{ tip }}</li>
+    </ul>
+  </div>
+</div>

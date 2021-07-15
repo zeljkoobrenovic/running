@@ -1,0 +1,24 @@
+<div style="margin-bottom: 10px">
+  <div *ngFor="let routine of dataService.routines" style="margin: 20px; vertical-align: top">
+    <h2>{{ routine.name }}</h2>
+    <div>{{ routine.description }}</div>
+    <div>
+      <div style="display: inline-block; width: 100px; vertical-align: top; padding-top: 20px">
+        <img [src]="'assets/' + routine.icon" style="width: 94px">
+      </div>
+      <div style="display: inline-block; width: calc(100% - 120px); vertical-align: top">
+        <ul>
+          <li *ngFor="let step of routine.steps" [innerHTML]="step.name"></li>
+          <li *ngIf="routine.videos">Example external resources:</li>
+          <ul *ngIf="routine.videos">
+            <li *ngFor="let video of routine.videos">
+              <a [href]="video.link" target="_blank">{{ video.title }}</a>
+              by {{ video.by }}
+              <span *ngIf="video.skipIntroLink">(<a [href]="video.skipIntroLink" target="_blank">skip intro</a>)</span>
+            </li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

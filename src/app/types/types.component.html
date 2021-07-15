@@ -1,0 +1,65 @@
+<div style="margin: 10px">
+  <table>
+    <tr>
+      <td>
+      </td>
+      <td>
+        <table>
+          <tr style="color: grey">
+            <td style="width: 350px"></td>
+            <td valign="top" class="effectHeader" colspan="3">BASE &amp; STRENGTH</td>
+            <td valign="top" class="effectHeader" colspan="2">SPEED</td>
+            <td valign="top" class="effectHeader" colspan="2">SUSTAINABILITY</td>
+          </tr>
+          <tr style="color: grey">
+            <td style="width: 350px"></td>
+            <td valign="top" class="effectHeader">Aerobic Endurance</td>
+            <td valign="top" class="effectHeader">Anaerobic Threshold</td>
+            <td valign="top" class="effectHeader">Functional Strength</td>
+            <td valign="top" class="effectHeader">Speed</td>
+            <td valign="top" class="effectHeader">Speed Control</td>
+            <td valign="top" class="effectHeader">Elasticity</td>
+            <td valign="top" class="effectHeader">Recovery</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr *ngFor="let group of service.types">
+      <td valign="top" style="padding-top: 4px">{{ group.name }}</td>
+      <td valign="top">
+        <table>
+          <tr *ngFor="let type of group.types">
+            <td valign="top">
+              <img *ngIf="type.icon" [src]="'assets/' + type.icon" style="width: 42px">
+            </td>
+            <td valign="top" style="width: 270px" (click)="selected[type.name] = selected[type.name] ? false : true">
+              <span style="text-decoration: underline; cursor: pointer">{{ type.name }}</span>
+              <div
+                style="display: inline-block; border-radius: 50%; background-color: lightgrey; width: 18px; height: 18px; text-align: center"
+                [title]="type.description">
+                ?
+              </div>
+              <div *ngIf="type.examples && selected[type.name]" style="font-size: 90%; margin-left: 4px">
+                <p style="margin-bottom: 0">Examples: </p>
+                <ul style="margin-top: 0">
+                  <li *ngFor="let example of type.examples">{{ example }}</li>
+                </ul>
+                <p>"{{ type.description }}"</p>
+              </div>
+            </td>
+            <td valign="top" style="width: 32px" title="requires a thorough warming up routine">
+              <img *ngIf="type.warmUp" src="assets/warmup.png" style="width: 20px; opacity: 0.6;">
+            </td>
+            <td valign="top" [class]="type.aerobicEndurance ? 'effect' : 'effectInnactive'">{{type.aerobicEndurance}}</td>
+            <td valign="top" [class]="type.anaerobicThreashold ? 'effect' : 'effectInnactive'">{{type.anaerobicThreashold}}</td>
+            <td valign="top" [class]="type.strength ? 'effect' : 'effectInnactive'">{{type.strength}}</td>
+            <td valign="top" [class]="type.speed ? 'effect' : 'effectInnactive'">{{type.speed}}</td>
+            <td valign="top" [class]="type.speedControl ? 'effect' : 'effectInnactive'">{{type.speedControl}}</td>
+            <td valign="top" [class]="type.elasticity ? 'effect' : 'effectInnactive'">{{type.elasticity}}</td>
+            <td valign="top" [class]="type.recovery ? 'effect' : 'effectInnactive'">{{type.recovery}}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

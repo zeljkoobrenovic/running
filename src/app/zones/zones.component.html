@@ -1,0 +1,31 @@
+<div style="margin: 10px">
+  <div style="font-size: 130%">
+    Your Max Heart Rate: <input placeholder="max. heart rate" [(ngModel)]="heart" type="number" style="font-size: 130%; background-color: lightgray">
+  </div>
+  <br>
+  <h2>Heart Zones (D0-D3)</h2>
+  <table>
+    <tr *ngFor="let zone of dZones" [style.backgroundColor]="'rgba(190, 0, 0, ' + zone.start/1.7 + ')'">
+      <td>{{ zone.name }}</td>
+      <td valign="top">{{ perc(zone.start) }} - {{ perc(zone.end) }}</td>
+      <td valign="top">{{ start(zone) }} - {{ end(zone) }}</td>
+    </tr>
+  </table>
+  <br>
+  <h2>Rated Perceived Exertion (RPE) Scale for Judging Effort and Pace</h2>
+  <table>
+    <tr *ngFor="let zone of rpeZones" [style.backgroundColor]="'rgba(190, 0, 0, ' + zone.start/1.7 + ')'">
+      <td style="padding: 0">
+        <table>
+          <tr *ngFor="let zone of zone.zones">
+            <td style="width: 150px">{{ zone.name }}</td>
+            <td style="width: 280px">{{ zone.activity }}</td>
+            <td>{{ zone.talking }}</td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top">{{ perc(zone.start) }}<br>{{ start(zone) }}</td>
+      <td valign="top">{{ perc(zone.end) }}<br>{{ end(zone) }}</td>
+    </tr>
+  </table>
+</div>

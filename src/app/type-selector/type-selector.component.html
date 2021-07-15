@@ -1,0 +1,23 @@
+<mat-select [(ngModel)]="dayInfo.training"  (selectionChange)="update()" style="width: 100%; min-width: 199px">
+  <mat-option [value]="{}"></mat-option>
+  <mat-option *ngFor="let type of trainings" [value]="type">
+    {{type.name}}
+  </mat-option>
+</mat-select>
+<mat-select [(ngModel)]="dayInfo.example"
+            (selectionChange)="update()"
+            style="max-width: calc(100% - 30px); margin-left: 30px; border: 1px dashed grey; color: grey"
+            *ngIf="details && dayInfo.training.examples">
+  <mat-option value=""></mat-option>
+  <mat-option *ngFor="let ex of dayInfo.training.examples" [value]="ex">
+    {{ex}}
+  </mat-option>
+</mat-select>
+<mat-select [(ngModel)]="dayInfo.focus"
+            style="max-width: calc(100% - 30px); margin-left: 30px; border: 1px dotted grey; color: grey"
+            *ngIf="details && dayInfo.training.examples" placeholder="focus" (selectionChange)="update()">
+  <mat-option value=""></mat-option>
+  <mat-option *ngFor="let focus of service.focus" [value]="focus">
+    focus on {{focus}}
+  </mat-option>
+</mat-select>

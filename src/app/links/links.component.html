@@ -1,0 +1,7 @@
+<div style="margin-top: 20px">
+  <ul>
+    <li *ngFor="let link of service.links">
+      <a target="_blank" [href]="link.link">{{ link.title }}</a>
+    </li>
+  </ul>
+</div>

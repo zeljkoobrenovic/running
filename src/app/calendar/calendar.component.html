@@ -1,0 +1,25 @@
+<div style="margin: 10px">
+  <div style="margin-bottom: 12px">
+    <button (click)="service.reset()">reset</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;examples: <button (click)="service.example('5km')">5km</button>&nbsp;
+    <button (click)="service.reset()">10km</button>&nbsp;
+    <button (click)="service.reset()">21.1km</button>
+  </div>
+  <table style="width: 100%" *ngFor="let start of starts()" style="margin-bottom: 20px">
+    <tr>
+      <td></td>
+      <td *ngFor="let week of weeksFrom(start); let i = index;"
+          [style.backgroundColor]="i % 2 === 0 ? '#e3e3e3' : '#d3d3f3'">
+        Week&nbsp;{{ i + start + 1 }}
+      </td>
+    </tr>
+    <tr *ngFor="let day of days()">
+      <td style="background-color: #f4f4f4">{{ day }}</td>
+      <td *ngFor="let week of weeksFrom(start); let i = index;"
+          [style.backgroundColor]="i % 2 === 0 ? '#e3e3e3' : '#d3d3f3'" valign="top">
+        <app-type-selector [dayInfo]="dayInfo(week, day, 1)"></app-type-selector>
+        <app-type-selector [dayInfo]="dayInfo(week, day, 2)"></app-type-selector>
+      </td>
+    </tr>
+  </table>
+</div>

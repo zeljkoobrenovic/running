@@ -1,0 +1,20 @@
+<div style="margin: 10px">
+  <table style="width: 100%" style="margin-bottom: 20px">
+    <tr>
+      <td></td>
+      <td>Standard</td>
+      <td>Alternative</td>
+    </tr>
+    <tr *ngFor="let day of days()">
+      <td style="background-color: #f4f4f4">{{ day }}</td>
+      <td style="background-color: #f4f4f4" valign="top">
+        <app-type-selector [details]="false"></app-type-selector>
+        <app-type-selector [details]="false"></app-type-selector>
+      </td>
+      <td style="background-color: #f4f4f4" valign="top">
+        <app-type-selector [details]="false"></app-type-selector>
+        <app-type-selector [details]="false"></app-type-selector>
+      </td>
+    </tr>
+  </table>
+</div>
